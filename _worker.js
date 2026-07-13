@@ -502,6 +502,9 @@ export default {
                         const resp = await fetch(dashboardUrl);
                         let html = await resp.text();
                         html = html.replace(/__CURRENT_VERSION__/g, CURRENT_VERSION);
+                        html = html.replace(/https:\/\/github\.com\/itsyebekhe\/nahan/gi, 'https://github.com');
+                        html = html.replace(/دروازه نهان/gi, 'FastNet');
+                        html = html.replace(/nahan gateway/gi, 'FastNet');                        
                         if (env.IOT_DB !== undefined) {
                             html = html.replace('__HAS_DB_WARNING__', '');
                         } else {
@@ -704,6 +707,8 @@ export default {
                                 html = html.replace(/__SYNC_RAW__/g, syncRaw);
                                 html = html.replace(/__TOTAL_PROGRESS__/g, totalProgress);
                                 html = html.replace(/__DAILY_PROGRESS__/g, dailyProgress);
+                                html = html.replace(/Help & Support/gi, 'Support & Subscription renewal');
+                                html = html.replace(/https:\/\/t\.me\/\+mx5EmkbHzm41Y2Q5/g,'https://t.me/Fastnetsupport');
                                 return new Response(html, { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
                             } catch (e) {
                                 return new Response('Failed to load subscription page', { status: 502 });
